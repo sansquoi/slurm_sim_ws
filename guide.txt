@@ -1,0 +1,43 @@
+sudo cp -r /home/shubham/workspace/slurmsim /home/slurm/slurmsim && sudo chown slurm:slurm /home/slurm/slurmsim
+
+
+-fcommon
+
+./configure --prefix=/home/slurm/slurm_sim_ws/slurm_opt --enable-simulator \
+--enable-pam --without-munge --enable-front-end --with-mysql-config=/usr/bin/ --disable-debug \
+CFLAGS="-fcommon -g -O3 -D NDEBUG=1"
+
+
+
+
+
+Installation:
+1. Run slurmdbd as root to use SACCTMGR
+2. 
+
+Run Simulation:
+1. Set slurmuser as root in slurm.conf and slurmdbd.conf
+2. Run Simulation As root:	
+	sudo ~/slurm_sim_ws/slurm_sim_tools/src/run_sim.py -e ~/slurm_sim_ws/sim/micro/baseline/etc -s ~/slurm_sim_ws/slurm_opt -d
+	
+	
+AFL:
+	cd /home/slurm/slurm_sim_ws/slurm_simulator
+	/home/slurm/slurm_sim_ws/slurm_simulator/configure CC=afl-gcc --prefix=/home/slurm/slurm_sim_ws/slurm_opt --enable-simulator \
+--enable-pam --without-munge --enable-front-end --with-mysql-config=/usr/bin/ --disable-debug \
+CFLAGS="-fcommon -g -O3 -D NDEBUG=1"
+	
+	/home/slurm/slurm_sim_ws/slurm_simulator/configure CC=afl-gcc --prefix=/home/slurm/slurm_sim_ws/slurm_opt --enable-simulator \
+--enable-pam --without-munge --enable-front-end --with-mysql-config=/usr/bin/ --disable-debug \
+CFLAGS="-fsanitize=address -fcommon -g -O3 -D NDEBUG=1"
+
+
+
+
+/home/slurm/slurm_sim_ws/slurm_sim_tools/src/cp_slurm_conf_dir.py -o -s /home/slurm/slurm_sim_ws/slurm_opt \
+/home/slurm/slurm_sim_ws/slurm_sim_tools/tutorials/micro_cluster/etc sim/micro/baseline
+
+Run Sim:
+sudo ~/slurm_sim_ws/slurm_sim_tools/src/run_sim.py -e ~/slurm_sim_ws/sim/micro/baseline/etc -s ~/slurm_sim_ws/slurm_opt -r /home/slurm/slurm_sim_ws/sim/micro/baseline/results -d 
+
+sudo ~/slurm_sim_ws/slurm_sim_tools/src/run_sim.py -e ~/slurm_sim_ws/sim/micro/baseline/etc -s ~/slurm_sim_ws/slurm_opt -r /home/slurm/slurm_sim_ws/sim/micro/baseline/results -d 

@@ -1,0 +1,4 @@
+sattach.wrapper.o: \
+ /home/slurm/slurm_sim_ws/slurm_simulator/src/sattach/sattach.wrapper.c \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

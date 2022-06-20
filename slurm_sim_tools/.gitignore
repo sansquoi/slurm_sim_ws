@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.project
+.pydevproject
+__pycache__
+/.idea
+.o
+.so
+/slurm_simulator
